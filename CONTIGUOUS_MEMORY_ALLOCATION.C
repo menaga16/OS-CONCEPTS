@@ -3,7 +3,6 @@
 int noofprocess,noofhole;
 int holeold[10],holesize[10],processsize[10],holenumber[10];
 void oldtonew();
-//First fit way of allocating the memory to the process
 void firstfit(){
 int i,j;
 printf("\n                                                        First Fit");
@@ -29,7 +28,6 @@ printf("\nP%d\t%d\tNot allocated",i,processsize[i]);
 }
 }
 }
-//Best fit way of allocating memory to the process
 void bestfit(){
 int i,j;
 int temp;
@@ -39,11 +37,9 @@ for(j=i+1;j<=noofhole;j++)
         {
 if(holesize[i]>holesize[j])
             {
-//holes are sorted
 temp=holesize[i];
 holesize[i]=holesize[j];
 holesize[j]=temp;
-//hole number is sorted according to the size
 temp=holenumber[i];
 holenumber[i]=holenumber[j];
 holenumber[j]=temp;
@@ -69,7 +65,6 @@ if(c==0)
 printf("\nP%d\t%d\tNot allocated",i,processsize[i]);
 }
 }
-//Worst fit way of allocating memory to the process
 void worstfit(){
 int i,j;
 int temp;
@@ -79,11 +74,9 @@ for(j=i+1;j<=noofhole;j++)
         {
 if(holesize[i]<holesize[j])
             {
-//holes are sorted
 temp=holesize[i];
 holesize[i]=holesize[j];
 holesize[j]=temp;
-//hole number is sorted according to the size
 temp=holenumber[i];
 holenumber[i]=holenumber[j];
 holenumber[j]=temp;
