@@ -151,9 +151,6 @@ printf("\n1.First Fit \n2.Best Fit \n3.Worst Fit");
 printf("\nEnter your choice: ");
 scanf("%d",&ch);
  printf("\n--------------------------------------------------------------------------------------------------------------------------");
-while(ch!=4)
-{
-
 switch(ch)
     {
 case 1:
@@ -171,7 +168,7 @@ default:
 printf("Wrong choice!!");
 }
 }
-}
+
 getch();
 return 0;
 }
