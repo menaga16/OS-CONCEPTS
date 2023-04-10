@@ -1,38 +1,59 @@
 #include<stdio.h>
-void main()
+#include<conio.h>
+int l[16] ,p[10];
+ int n, page;
+ void binary(int n);
+ void phyadd(int n);
+void logadd(int key)
 {
-int memsize=32;
-int pagesize,nofpage;
-int p[100];
-int frameno,offset;
-int logadd,phyadd;
-int i;
-int choice=0;
-printf("-------------------------------------------------------------------------------------------------------------------------------------------\n");
-printf("                                         Paging technique of memory management\n");
-printf("--------------------------------------------------------------------------------------------------------------------------------------------\n");
-printf("\n** memory size = %d **",memsize);
-printf("\nEnter page size:");
-scanf("%d",&pagesize);
-
-nofpage=memsize/pagesize;
-
-for(i=0;i<nofpage;i++)
+   
+     for(int i=0;i<16;i++)
+     {
+             if(key==l[i])
+             {
+                  n=i;    
+                  printf("index %d\n",n);      
+             }            
+             
+     }
+      phyadd(n);
+ }
+ void phyadd(int n)
+ {
+      int off,pageno,temp,add;
+      off=n%page;
+        printf("off %d\n",off);    
+      pageno=n/page;
+        printf("pageno %d\n",pageno);    
+      for(int i=0;i<page;i++)
+      {
+         if(pageno==i)
+         {
+                 temp=p[i];  
+                  printf("temp %d",temp);    
+         }      
+      }
+      add=(temp*page)+off;
+      printf("\n%d",add);
+  }
+int main()
 {
-printf("\nEnter the frame of page%d:",i+1);
-scanf("%d",&p[i]);
-}
-
-do
-{
-printf("\nEnter a logical address:");
-scanf("%d",&logadd);
-frameno=logadd/pagesize;
-offset=logadd%pagesize;
-phyadd=(p[frameno]*pagesize)+offset;
-printf("\n offset value: %d",offset);
-printf("\nPhysical address is:%d",phyadd);
-printf("\nDo you want to continue(1/0)?:");
-scanf("%d",&choice);
-}while(choice==1);
+    int key;
+    printf("enter value of logical  address\n");
+    for(int i=0;i<16;i++)
+    {
+       printf(" logical address %d: ",i);
+       scanf("%d",&l[i]);  
+    }
+    printf("\nenter pagesize\n");
+    scanf("%d",&page);
+    for(int i=0;i<page;i++)
+    {
+       printf("size of page %d: ",i);
+       scanf("%d",&p[i]);  
+    }
+    printf("\nenter value to find physical address\n");
+    scanf("%d",&key);
+    logadd(key);
+    getch();
 }
